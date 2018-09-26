@@ -42,4 +42,21 @@ public class WordsearchTest
 
     }
 
+    @Test
+    public void testParseSearchGrid(){
+
+        ArrayList<String> sampleArrayList = new ArrayList<String>();
+        sampleArrayList.add("firstword,secondword,thirdword");
+        sampleArrayList.add("0,1,2");
+        sampleArrayList.add("3,4,5");
+        sampleArrayList.add("6,7,8");
+        
+        //Wordsearch ws = new Wordsearch();
+        char[][] searchGrid = Wordsearch.parseSearchGrid(sampleArrayList);
+        assertEquals('0', searchGrid[0][0]);
+        assertEquals('2', searchGrid[0][2]);
+        assertEquals('6', searchGrid[2][0]);
+        assertEquals('8', searchGrid[2][2]);
+    }
+
 }
