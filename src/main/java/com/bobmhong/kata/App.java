@@ -12,7 +12,11 @@ public class App
         ClassLoader classLoader = App.class.getClassLoader();
         String wsInputFileNameFullPath = classLoader.getResource(wsInputFileName).getFile();
 
-        wordsearch ws = new Wordsearch();
+        // Strip leading / in Windows which returns path like /c:/mypath
+        if (wsInputFileNameFullPath.contains(":")) {
+            wsInputFileNameFullPath = wsInputFileNameFullPath.substring(1);
+        }
+        Wordsearch ws = new Wordsearch();
         try {
             ArrayList<String> wsInputArrayList = ws.LoadWordSearchInputArrayList(wsInputFileNameFullPath);
             System.out.println( "Word List: " + wsInputArrayList.get(0));

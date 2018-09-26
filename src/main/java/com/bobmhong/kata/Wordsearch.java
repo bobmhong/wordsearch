@@ -21,4 +21,24 @@ public class Wordsearch {
 		return wordList.split(",");
 	}
 
+	public static String[][] parseSearchGrid(ArrayList<String> wsArrayList){
+		// return a 2-d char array 
+		int maxidx = wsArrayList.get(0).split(",").length;
+
+		String searchGrid[][] = new String[maxidx][maxidx];
+		
+		int i,j = 0;
+
+		for (i=0; i<=maxidx-1; i++){
+			String dataRow = wsArrayList.get(i+1);
+			String[] letterArray = dataRow.split(",");
+			for (j=0; j<=maxidx-1; j++){
+				searchGrid[i][j] = letterArray[j];
+			}
+		}
+		return searchGrid;
+	}
+
+
+
 }
