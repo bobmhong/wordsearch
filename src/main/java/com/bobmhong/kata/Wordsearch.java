@@ -39,6 +39,14 @@ public class Wordsearch {
 		return searchGrid;
 	}
 
+	static ArrayList<String> solveHorizontalForward(String[] wordList, String[][] searchGrid) {
+		ArrayList<String> solutionArrayList = new ArrayList<String>();
 
+		int gridSize = searchGrid.length;
+		int i,j = 0;
+		
+		return solutionArrayList;
+	}
+	
 
 }
