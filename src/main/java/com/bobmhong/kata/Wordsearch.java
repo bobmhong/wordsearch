@@ -44,7 +44,27 @@ public class Wordsearch {
 
 		int gridSize = searchGrid.length;
 		int i,j = 0;
-		
+
+		for (String word : wordList) {
+			for(i=0; i<gridSize - 1; i++){
+				boolean foundWord = false;
+				String nextLetter = word.substring(0,1);
+				for (j=0; j<=gridSize-1; j++){
+					if(searchGrid[i][j] == nextLetter) {
+						//Save coordinates
+
+						// If Word Fully Matched then persist word and coordinates and break out to search for next word
+
+
+						// else save temp coordinates and set next letter
+					}
+					else{
+						// reset temp coordinate list
+					}
+				}
+
+			}
+		}
 		return solutionArrayList;
 	}
 	
