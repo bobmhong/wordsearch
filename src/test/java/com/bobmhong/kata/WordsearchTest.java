@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.junit.Test;
+import org.junit.Ignore;
 
 public class WordsearchTest {
     @Test
@@ -58,6 +59,7 @@ public class WordsearchTest {
         assertEquals("8", searchGrid[2][2]);
     }
 
+    @Ignore("implement helper methods first")
     @Test
     public void testSolveHorizontalForward() {
 
@@ -78,6 +80,12 @@ public class WordsearchTest {
         assertEquals("PIG: (4,3), (4,4), (4,5)", solutionArrayList.get(1));
         assertEquals("BIRD: (5,0), (5,1), (5,2)", solutionArrayList.get(2));
         assertEquals("DOG: (5,3), (5,4), (5,5)", solutionArrayList.get(2));
+    }
+
+    @Test
+    public void testGetCellCoordinate() {
+        Cell c = new Cell("A", 1, 0);
+        assertEquals("(1,0)", c.getCoordinate());
     }
 
 }
