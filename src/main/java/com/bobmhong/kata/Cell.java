@@ -14,4 +14,9 @@ public class Cell {
     public String getCoordinate() {
         return "(" + this.x + "," + this.y + ")";
     }
+
+    @Override
+    public String toString(){
+        return this.cellText;
+    }
 }
