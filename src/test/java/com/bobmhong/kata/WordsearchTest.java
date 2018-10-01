@@ -6,20 +6,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.junit.Test;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 
 public class WordsearchTest {
-    @Test
-    public void testLoadWordSearchInputArrayList() throws IOException {
+    static String wsInputFileNameFullPath;
 
+     @BeforeClass public static void resolveTestFile() {
         String wsInputFileName = "trekSampleData.txt";
         ClassLoader classLoader = WordsearchTest.class.getClassLoader();
-        String wsInputFileNameFullPath = classLoader.getResource(wsInputFileName).getFile();
+        wsInputFileNameFullPath = classLoader.getResource(wsInputFileName).getFile();
 
         // Strip leading / in Windows which returns path like /c:/mypath
         if (wsInputFileNameFullPath.contains(":")) {
             wsInputFileNameFullPath = wsInputFileNameFullPath.substring(1);
         }
+        System.out.println("Input Filename Full Path:" + wsInputFileNameFullPath);
+    } 
+
+    @Test
+    public void testLoadWordSearchInputArrayList() throws IOException {
 
         Wordsearch ws = new Wordsearch();
         ArrayList<String> wsInputArrayList = ws.LoadWordSearchInputArrayList(wsInputFileNameFullPath);
@@ -80,6 +86,29 @@ public class WordsearchTest {
         assertEquals("PIG: (4,3), (4,4), (4,5)", solutionArrayList.get(1));
         assertEquals("BIRD: (5,0), (5,1), (5,2)", solutionArrayList.get(2));
         assertEquals("DOG: (5,3), (5,4), (5,5)", solutionArrayList.get(2));
+    }
+
+    @Test
+    public void testInitGoodInputFileName(){
+        Wordsearch ws = new Wordsearch();
+		
+        boolean result = ws.init(wsInputFileNameFullPath);
+        assertEquals(true, result);
+        
+        String[] wl = ws.getWordList();
+        String[][] sg = ws.getSearchGrid();
+
+        assertEquals(7, wl.length);
+        assertEquals(15, sg[0].length);
+        assertEquals(15, sg[1].length);
+    }
+    
+    @Test
+    public void testInitBadInputFileName(){
+        Wordsearch ws = new Wordsearch();
+		
+        boolean result = ws.init("/resource/nonexistentFile.txt");
+        assertEquals(false, result);
     }
 
     
