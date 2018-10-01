@@ -9,10 +9,6 @@ public class SearchVector {
         this.cells = new ArrayList<Cell>();
     }
 
-    private void addCell(Cell c) {
-        this.cells.add(c);
-    }
-
     public void addCell(String cellText, int x, int y){
         Cell c = new Cell(cellText, x, y);
         this.cells.add(c);

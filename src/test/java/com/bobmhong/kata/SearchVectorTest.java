@@ -2,7 +2,6 @@ package com.bobmhong.kata;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import org.junit.Ignore;
 
 public class SearchVectorTest{
     @Test
@@ -42,7 +41,7 @@ public class SearchVectorTest{
 
         String vectorString = sv.toString();
 
-        assertEquals("ASX", sv.toString());
+        assertEquals("ASX", vectorString);
 
     }
 }
