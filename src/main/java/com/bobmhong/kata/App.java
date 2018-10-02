@@ -15,8 +15,13 @@ public class App
 		Wordsearch ws = new Wordsearch();
 
 		ws.init(wsInputFileNameFullPath);
-		ws.populateSearchList();
-		ws.solvePuzzle();
+		if (ws.populateSearchList()) {
+			ws.solvePuzzle();
+		}
+		else {
+			System.out.println("Sorry, No word matches were found.");
+		}
+		
 
 	}
     

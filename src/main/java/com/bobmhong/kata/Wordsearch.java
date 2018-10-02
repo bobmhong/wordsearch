@@ -11,7 +11,7 @@ public class Wordsearch {
 	private ArrayList<SearchVector> searchList;
 
 	public Wordsearch() {
-
+		searchList = new ArrayList<SearchVector>(); 
 	}
 
 	public String[] getWordList() {
@@ -95,9 +95,13 @@ public class Wordsearch {
 		// traverse the search grid to gather all possible search vectors
 
 		boolean result = false;
+		ArrayList<SearchVector> svl;
+		
+		svl = getHorizontalForwardSearchVectors();
+		searchList.addAll(svl);
 
-		searchList.addAll(getHorizontalForwardSearchVectors());
-		searchList.addAll(getHorizontalReverseSearchVectors());
+		svl=getHorizontalReverseSearchVectors();
+		searchList.addAll(svl);
 
 		if (this.searchList.size() > 0) {
 			result = true;
