@@ -60,8 +60,8 @@ public class WordsearchTest {
         // Wordsearch ws = new Wordsearch();
         String[][] searchGrid = Wordsearch.parseSearchGrid(sampleArrayList);
         assertEquals("0", searchGrid[0][0]);
-        assertEquals("2", searchGrid[0][2]);
-        assertEquals("6", searchGrid[2][0]);
+        assertEquals("6", searchGrid[0][2]);
+        assertEquals("2", searchGrid[2][0]);
         assertEquals("8", searchGrid[2][2]);
     }
 
@@ -111,5 +111,37 @@ public class WordsearchTest {
         assertEquals(false, result);
     }
 
-    
+    @Test
+    public void testGetHorizontalForwardSearchVectors() {
+        Wordsearch ws = new Wordsearch();
+        ArrayList<SearchVector> svList;
+        
+        ws.init(wsInputFileNameFullPath);
+
+        svList = ws.getHorizontalForwardSearchVectors();
+
+        assertEquals(15, svList.size());
+        String firstVectorString = "UMKHULKINVJOCWE";
+        String lastVectorString = "KYLBQQPMDFCKEAB";
+
+        assertEquals(firstVectorString, svList.get(0).toString());
+        assertEquals(lastVectorString, svList.get(14).toString());
+    }
+
+    @Test
+    public void testGetHorizontalReverseSearchVectors() {
+        Wordsearch ws = new Wordsearch();
+        ArrayList<SearchVector> svList;
+        
+        ws.init(wsInputFileNameFullPath);
+
+        svList = ws.getHorizontalReverseSearchVectors();
+
+        assertEquals(15, svList.size());
+        String firstVectorString = "EWCOJVNIKLUHKMU";
+        String lastVectorString =  "BAEKCFDMPQQBLYK";
+
+        assertEquals(firstVectorString, svList.get(0).toString());
+        assertEquals(lastVectorString, svList.get(14).toString());
+    }
 }
