@@ -95,13 +95,9 @@ public class Wordsearch {
 		// traverse the search grid to gather all possible search vectors
 
 		boolean result = false;
-		ArrayList<SearchVector> svl;
 		
-		svl = getHorizontalForwardSearchVectors();
-		searchList.addAll(svl);
-
-		svl=getHorizontalReverseSearchVectors();
-		searchList.addAll(svl);
+		searchList.addAll(getHorizontalForwardSearchVectors());
+		searchList.addAll(getHorizontalReverseSearchVectors());
 
 		if (this.searchList.size() > 0) {
 			result = true;
