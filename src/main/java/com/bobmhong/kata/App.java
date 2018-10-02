@@ -1,10 +1,15 @@
 package com.bobmhong.kata;
 
-public class App 
-{
-    public static void main(String[] args) {
+public class App {
+	public static void main(String[] args) {
+		String wsInputFileName;
 
-		String wsInputFileName = "trekSampleData.txt";
+		if (args.length > 0) {
+			wsInputFileName = args[0];
+		} else {
+			wsInputFileName = "trekSampleData.txt";
+		}
+
 		ClassLoader classLoader = App.class.getClassLoader();
 		String wsInputFileNameFullPath = classLoader.getResource(wsInputFileName).getFile();
 
@@ -17,12 +22,10 @@ public class App
 		ws.init(wsInputFileNameFullPath);
 		if (ws.populateSearchList()) {
 			ws.solvePuzzle();
-		}
-		else {
+		} else {
 			System.out.println("Sorry, No word matches were found.");
 		}
-		
 
 	}
-    
+
 }
