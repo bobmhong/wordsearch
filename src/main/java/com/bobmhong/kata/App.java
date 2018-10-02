@@ -2,24 +2,13 @@ package com.bobmhong.kata;
 
 public class App {
 	public static void main(String[] args) {
-		String wsInputFileName;
-		String wsInputFileNameFullPath;
+		String wsInputFileNameFullPath = "";
 
 		if (args.length > 0) {
 			wsInputFileNameFullPath = args[0];
 		} else {
-			// use sample file if none is specified
-			wsInputFileName = "trekSampleData.txt";
-			ClassLoader classLoader = App.class.getClassLoader();
-			wsInputFileNameFullPath = classLoader.getResource(wsInputFileName).getFile();
-
-			System.out.println("Original File Attempting to load: " + wsInputFileNameFullPath);
-
-			// Strip leading / in Windows which returns path like /c:/mypath
-			if (wsInputFileNameFullPath.contains(":")) {
-				wsInputFileNameFullPath = wsInputFileNameFullPath.substring(1);
-			}
-
+			System.out.println("Please specify the path to your Word Search data file as the first command line parameter.");
+			System.exit(1);	
 		}
 
 		System.out.println("Attempting to load: " + wsInputFileNameFullPath);
