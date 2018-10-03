@@ -11,7 +11,7 @@ public class Wordsearch {
 	private ArrayList<SearchVector> searchList;
 
 	public Wordsearch() {
-		searchList = new ArrayList<SearchVector>(); 
+		searchList = new ArrayList<SearchVector>();
 	}
 
 	public String[] getWordList() {
@@ -63,7 +63,6 @@ public class Wordsearch {
 
 	public void solvePuzzle() {
 
-
 		for (String word : wordList) {
 			for (SearchVector sv : searchList) {
 				String matchCoordinates = sv.getMatchCoordinates(word);
@@ -95,9 +94,10 @@ public class Wordsearch {
 		// traverse the search grid to gather all possible search vectors
 
 		boolean result = false;
-		
+
 		searchList.addAll(getHorizontalForwardSearchVectors());
 		searchList.addAll(getHorizontalReverseSearchVectors());
+		searchList.addAll(getDiag45DegreeSearchVectors());
 
 		if (this.searchList.size() > 0) {
 			result = true;
@@ -132,6 +132,51 @@ public class Wordsearch {
 			svList.add(sv);
 		}
 
+		return svList;
+	}
+
+	ArrayList<SearchVector> getDiag45DegreeSearchVectors() {
+		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
+		int startX, startY, x, y;
+		int gridSize = searchGrid[0].length;
+		SearchVector sv; 
+		
+		startX = 0;
+		startY = 1;
+		x = startX;
+		y = startY;
+		while (y < gridSize) {
+			sv = new SearchVector();
+			while (y >= 0) {
+				sv.addCell(searchGrid[x][y], x, y);
+				x++;
+				y--;
+			}
+			svList.add(sv);
+			startX = 0;
+			startY += 1;
+			x = startX;
+			y = startY;
+		}
+
+		startX = 1;
+		startY = gridSize - 1;
+		x = startX;
+		y = startY;
+		while (x < gridSize - 1) {
+			sv = new SearchVector();
+			while (x < gridSize) {
+				sv.addCell(searchGrid[x][y], x, y);
+				x++;
+				y--;
+			}
+			svList.add(sv);
+			startX++;
+			startY = gridSize - 1;
+			x = startX;
+			y = startY;
+		}
+		
 		return svList;
 	}
 }
