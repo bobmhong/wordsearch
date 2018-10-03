@@ -9,6 +9,14 @@ public class SearchVector {
         this.cells = new ArrayList<Cell>();
     }
 
+    public void addCell(Cell c) {
+        this.cells.add(c);
+    }
+
+    public Cell getCell(int cellIndex) {
+        return cells.get(cellIndex);
+    }
+
     public void addCell(String cellText, int x, int y){
         Cell c = new Cell(cellText, x, y);
         this.cells.add(c);
@@ -49,6 +57,17 @@ public class SearchVector {
             vectorString += c.toString();
         }
         return vectorString;
+    }
+
+    public SearchVector getReverseSearchVector(){
+        
+        SearchVector svReverse = new SearchVector();
+        
+        for(int i = cells.size() - 1; i >= 0; i--) {
+            Cell c = cells.get(i);
+            svReverse.addCell(c);
+        }
+        return svReverse;
     }
     
 }

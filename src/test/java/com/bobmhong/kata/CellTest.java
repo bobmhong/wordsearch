@@ -15,4 +15,10 @@ public class CellTest{
         Cell c = new Cell("A", 1, 0);
         assertEquals("A", c.toString());
     }
+
+    @Test
+    public void testAddCell() {
+        Cell c = new Cell("A", 1, 0);
+        assertEquals("A", c.toString());
+    }
 }

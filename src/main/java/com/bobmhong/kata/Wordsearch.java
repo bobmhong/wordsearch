@@ -95,8 +95,8 @@ public class Wordsearch {
 
 		boolean result = false;
 
-		searchList.addAll(getHorizontalForwardSearchVectors());
-		searchList.addAll(getHorizontalReverseSearchVectors());
+		searchList.addAll(getHorizontalSearchVectors());
+		searchList.addAll(getVerticalSearchVectors());
 		searchList.addAll(getDiag45DegreeSearchVectors());
 
 		if (this.searchList.size() > 0) {
@@ -105,7 +105,7 @@ public class Wordsearch {
 		return result;
 	}
 
-	ArrayList<SearchVector> getHorizontalForwardSearchVectors() {
+	ArrayList<SearchVector> getHorizontalSearchVectors() {
 		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
 		int x, y;
 
@@ -115,21 +115,22 @@ public class Wordsearch {
 				sv.addCell(searchGrid[x][y], x, y);
 			}
 			svList.add(sv);
+			svList.add(sv.getReverseSearchVector());
 		}
 
 		return svList;
 	}
-
-	ArrayList<SearchVector> getHorizontalReverseSearchVectors() {
+	ArrayList<SearchVector> getVerticalSearchVectors() {
 		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
 		int x, y;
 
-		for (y = 0; y < searchGrid[0].length; y++) {
+		for (x = 0; x < searchGrid[0].length; x++) {
 			SearchVector sv = new SearchVector();
-			for (x = searchGrid[1].length - 1; x >= 0; x--) {
+			for (y = 0; y < searchGrid[1].length; y++) {
 				sv.addCell(searchGrid[x][y], x, y);
 			}
 			svList.add(sv);
+			svList.add(sv.getReverseSearchVector());
 		}
 
 		return svList;
@@ -153,6 +154,7 @@ public class Wordsearch {
 				y--;
 			}
 			svList.add(sv);
+			svList.add(sv.getReverseSearchVector());
 			startX = 0;
 			startY += 1;
 			x = startX;
@@ -171,6 +173,7 @@ public class Wordsearch {
 				y--;
 			}
 			svList.add(sv);
+			svList.add(sv.getReverseSearchVector());
 			startX++;
 			startY = gridSize - 1;
 			x = startX;

@@ -88,36 +88,54 @@ public class WordsearchTest {
     }
 
     @Test
-    public void testGetHorizontalForwardSearchVectors() {
+    public void testGetHorizontalSearchVectors() {
         Wordsearch ws = new Wordsearch();
         ArrayList<SearchVector> svList;
         
         ws.init(wsInputFileNameFullPath);
 
-        svList = ws.getHorizontalForwardSearchVectors();
+        svList = ws.getHorizontalSearchVectors();
 
-        assertEquals(15, svList.size());
+        assertEquals(30, svList.size());
         String firstVectorString = "UMKHULKINVJOCWE";
-        String lastVectorString = "KYLBQQPMDFCKEAB";
-
-        assertEquals(firstVectorString, svList.get(0).toString());
-        assertEquals(lastVectorString, svList.get(14).toString());
-    }
-
-    @Test
-    public void testGetHorizontalReverseSearchVectors() {
-        Wordsearch ws = new Wordsearch();
-        ArrayList<SearchVector> svList;
-        
-        ws.init(wsInputFileNameFullPath);
-
-        svList = ws.getHorizontalReverseSearchVectors();
-
-        assertEquals(15, svList.size());
-        String firstVectorString = "EWCOJVNIKLUHKMU";
         String lastVectorString =  "BAEKCFDMPQQBLYK";
 
         assertEquals(firstVectorString, svList.get(0).toString());
-        assertEquals(lastVectorString, svList.get(14).toString());
+        assertEquals(lastVectorString, svList.get(29).toString());
+    }
+
+    @Test
+    public void testGetVerticalSearchVectors() {
+        Wordsearch ws = new Wordsearch();
+        ArrayList<SearchVector> svList;
+        
+        ws.init(wsInputFileNameFullPath);
+
+        svList = ws.getVerticalSearchVectors();
+
+        assertEquals(30, svList.size());
+        String firstVectorString = "ULHBASBONESTOWK";
+        String lastVectorString =  "BSHKDKSPZFDEGGE";
+
+        assertEquals(firstVectorString, svList.get(0).toString());
+        assertEquals(lastVectorString, svList.get(29).toString());
+    }
+
+    @Test
+    public void testGetDiag45DegreeSearchVectors() {
+        Wordsearch ws = new Wordsearch();
+        ArrayList<SearchVector> svList;
+        
+        ws.init(wsInputFileNameFullPath);
+
+        svList = ws.getDiag45DegreeSearchVectors();
+
+        String firstVectorString = "LM";
+        String firstVectorRevString = "ML";
+        String lastVectorString =  "AS";
+        String lastVectorRevString =  "SA";
+
+        assertEquals(firstVectorString, svList.get(0).toString());
+        assertEquals(firstVectorRevString, svList.get(1).toString());
     }
 }

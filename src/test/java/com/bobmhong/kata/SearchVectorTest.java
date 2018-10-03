@@ -44,4 +44,27 @@ public class SearchVectorTest{
         assertEquals("ASX", vectorString);
 
     }
+
+    @Test
+    public void getReverseSearchVector(){
+
+        SearchVector sv = new SearchVector();
+        sv.addCell("A", 1, 0);
+        sv.addCell("S", 2, 0);
+        sv.addCell("X", 3, 0);
+
+        String reverseVectorString;
+        SearchVector reverseSearchVector = sv.getReverseSearchVector();
+        assertEquals("XSA", reverseSearchVector.toString());
+    }
+
+    @Test
+    public void testAddCellObject() {
+        SearchVector sv = new SearchVector();
+        Cell c = new Cell("A", 1, 0);
+        sv.addCell(c);
+        Cell d = sv.getCell(0);
+
+        assertEquals("A", d.toString());
+    }
 }
