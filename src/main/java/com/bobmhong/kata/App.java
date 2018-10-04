@@ -24,9 +24,7 @@ public class App {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.exit(1);
 		}
-		System.exit(0);
 
 	}
 

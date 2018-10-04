@@ -45,7 +45,6 @@ public class AppTest {
     }
     
     @Test (expected = Error.class)
-    @Ignore
     public void testMainwithMissingDataFileArg() throws Exception {
         String[] args = {};
     
