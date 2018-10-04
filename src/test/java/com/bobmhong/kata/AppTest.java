@@ -43,19 +43,12 @@ public class AppTest {
 
         assertEquals(outputExpected, outContent.toString());
     }
-
-    @Test
+    
+    @Test (expected = Error.class)
     @Ignore
-    // This test doesn't complete because System.exit() is called.  Need alternate approach in order
-    // to test this code path.
-    public void testMainwithMissingDataFileArg() {
+    public void testMainwithMissingDataFileArg() throws Exception {
         String[] args = {};
-        String outputExpected;
-
-        outputExpected = "Please specify the path to your Word Search data file as the first command line parameter.\n";
     
         App.main(args);
-
-        assertEquals(outputExpected, outContent.toString());
     }    
 }

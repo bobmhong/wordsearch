@@ -7,20 +7,26 @@ public class App {
 		if (args.length > 0) {
 			wsInputFileNameFullPath = args[0];
 		} else {
-			System.out.println("Please specify the path to your Word Search data file as the first command line parameter.");
-			System.exit(1);	
+			String msg=	"Please specify the path to your Word Search data file as the first command line parameter.";
+			throw new java.lang.Error(msg);
 		}
 
 		System.out.println("Attempting to load: " + wsInputFileNameFullPath);
 
-		Wordsearch ws = new Wordsearch();
+		try {
+			Wordsearch ws = new Wordsearch();
 
-		ws.init(wsInputFileNameFullPath);
-		if (ws.populateSearchList()) {
-			ws.solvePuzzle();
-		} else {
-			System.out.println("Sorry, No word matches were found.");
+			ws.init(wsInputFileNameFullPath);
+			if (ws.populateSearchList()) {
+				ws.solvePuzzle();
+			} else {
+				System.out.println("Sorry, No word matches were found.");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.exit(1);
 		}
+		System.exit(0);
 
 	}
 
