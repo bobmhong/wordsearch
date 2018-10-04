@@ -1,5 +1,8 @@
 # Readme - Word search
 
+This is an implementation of a word search command line program that satisfies the code kata at  
+https://github.com/PillarTechnology/kata-word-search
+
 ## Build, Run Tests, and Create Jar, Install in local Maven repo
 ```
 mvn clean install
