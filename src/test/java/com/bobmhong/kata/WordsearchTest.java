@@ -129,6 +129,7 @@ public class WordsearchTest {
         ws.init(wsInputFileNameFullPath);
 
         svList = ws.getDiag45DegreeSearchVectors();
+        int svListSize = svList.size();
 
         String firstVectorString = "LM";
         String firstVectorRevString = "ML";
@@ -137,5 +138,28 @@ public class WordsearchTest {
 
         assertEquals(firstVectorString, svList.get(0).toString());
         assertEquals(firstVectorRevString, svList.get(1).toString());
+        assertEquals(lastVectorString, svList.get(svListSize - 2).toString());
+        assertEquals(lastVectorRevString, svList.get(svListSize - 1).toString());
+    }
+
+    @Test
+    public void testGetDiag315DegreeSearchVectors() {
+        Wordsearch ws = new Wordsearch();
+        ArrayList<SearchVector> svList;
+        
+        ws.init(wsInputFileNameFullPath);
+
+        svList = ws.getDiag315DegreeSearchVectors();
+        int svListSize = svList.size();
+
+        String firstVectorString = "GW";
+        String firstVectorRevString = "WG";
+        String lastVectorString =  "YW";
+        String lastVectorRevString =  "WY";
+
+        assertEquals(firstVectorString, svList.get(0).toString());
+        assertEquals(firstVectorRevString, svList.get(1).toString());
+        assertEquals(lastVectorString, svList.get(svListSize - 2).toString());
+        assertEquals(lastVectorRevString, svList.get(svListSize - 1).toString());
     }
 }
