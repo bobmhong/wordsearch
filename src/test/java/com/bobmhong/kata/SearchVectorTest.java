@@ -53,7 +53,6 @@ public class SearchVectorTest{
         sv.addCell("S", 2, 0);
         sv.addCell("X", 3, 0);
 
-        String reverseVectorString;
         SearchVector reverseSearchVector = sv.getReverseSearchVector();
         assertEquals("XSA", reverseSearchVector.toString());
     }
