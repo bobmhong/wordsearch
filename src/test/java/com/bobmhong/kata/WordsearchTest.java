@@ -27,7 +27,7 @@ public class WordsearchTest {
     public void testLoadWordSearchInputArrayList() throws IOException {
 
         Wordsearch ws = new Wordsearch();
-        ArrayList<String> wsInputArrayList = ws.LoadWordSearchInputArrayList(wsInputFileNameFullPath);
+        ArrayList<String> wsInputArrayList = ws.loadWordSearchInputArrayList(wsInputFileNameFullPath);
         assertEquals("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA", wsInputArrayList.get(0));
     }
 

@@ -26,7 +26,7 @@ public class Wordsearch {
 		return searchGrid;
 	}
 
-	ArrayList<String> LoadWordSearchInputArrayList(String wsInputFileName) throws IOException {
+	ArrayList<String> loadWordSearchInputArrayList(String wsInputFileName) throws IOException {
 		// returns an ArrayList of Strings from the file specified as a parameter
 		ArrayList<String> wordSearchInputArrayList;
 		wordSearchInputArrayList = new ArrayList<String>(Files.readAllLines(Paths.get(wsInputFileName)));
