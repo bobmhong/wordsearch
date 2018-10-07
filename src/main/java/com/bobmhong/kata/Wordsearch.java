@@ -47,7 +47,7 @@ public class Wordsearch {
 		// (The first row is the word list to search for.)
 		int maxidx = wsArrayList.get(1).split(",").length;
 
-		String searchGrid[][] = new String[maxidx][maxidx];
+		String[][] searchGrid = new String[maxidx][maxidx];
 
 		int x, y = 0;
 
@@ -59,10 +59,6 @@ public class Wordsearch {
 			}
 		}
 		return searchGrid;
-	}
-
-	public void buildSearchList() {
-
 	}
 
 	public void solvePuzzle() {
@@ -82,7 +78,7 @@ public class Wordsearch {
 		ArrayList<String> inputArrayList;
 
 		try {
-			inputArrayList = LoadWordSearchInputArrayList(wsInputFileNameFullPath);
+			inputArrayList = loadWordSearchInputArrayList(wsInputFileNameFullPath);
 		} catch (IOException e) {
 			logger.error("Error loading Word Search Input File: " + wsInputFileNameFullPath, e);
 			return false;
@@ -104,7 +100,8 @@ public class Wordsearch {
 		searchList.addAll(getDiag45DegreeSearchVectors());
 		searchList.addAll(getDiag315DegreeSearchVectors());
 
-		if (this.searchList.size() > 0) {
+		//this.searchList.size() > 0)
+		if (!this.searchList.isEmpty()) {
 			result = true;
 		}
 		return result;
@@ -112,7 +109,8 @@ public class Wordsearch {
 
 	ArrayList<SearchVector> getHorizontalSearchVectors() {
 		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
-		int x, y;
+		int x;
+		int y;
 
 		for (y = 0; y < searchGrid[0].length; y++) {
 			SearchVector sv = new SearchVector();
@@ -127,7 +125,8 @@ public class Wordsearch {
 	}
 	ArrayList<SearchVector> getVerticalSearchVectors() {
 		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
-		int x, y;
+		int x;
+		int y;
 
 		for (x = 0; x < searchGrid[0].length; x++) {
 			SearchVector sv = new SearchVector();
@@ -143,7 +142,10 @@ public class Wordsearch {
 
 	ArrayList<SearchVector> getDiag45DegreeSearchVectors() {
 		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
-		int startX, startY, x, y;
+		int startX;
+		int startY;
+		int x;
+		int y;
 		int gridSize = searchGrid[0].length;
 		SearchVector sv; 
 		
@@ -190,7 +192,10 @@ public class Wordsearch {
 
 	ArrayList<SearchVector> getDiag315DegreeSearchVectors() {
 		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
-		int startX, startY, x, y;
+		int startX;
+		int startY;
+		int x;
+		int y;
 		int gridSize = searchGrid[0].length;
 		SearchVector sv; 
 		
