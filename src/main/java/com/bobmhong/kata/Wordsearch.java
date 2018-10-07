@@ -28,8 +28,7 @@ public class Wordsearch {
 
 	ArrayList<String> loadWordSearchInputArrayList(String wsInputFileName) throws IOException {
 		// returns an ArrayList of Strings from the file specified as a parameter
-		ArrayList<String> wordSearchInputArrayList;
-		wordSearchInputArrayList = new ArrayList<String>(Files.readAllLines(Paths.get(wsInputFileName)));
+		ArrayList<String> wordSearchInputArrayList = new ArrayList<>(Files.readAllLines(Paths.get(wsInputFileName)));
 		return wordSearchInputArrayList;
 
 	}
@@ -49,7 +48,8 @@ public class Wordsearch {
 
 		String[][] searchGrid = new String[maxidx][maxidx];
 
-		int x, y = 0;
+		int x = 0;
+		int y = 0;
 
 		for (y = 0; y < maxidx; y++) {
 			String dataRow = wsArrayList.get(y + 1);
@@ -101,14 +101,14 @@ public class Wordsearch {
 		searchList.addAll(getDiag315DegreeSearchVectors());
 
 		//this.searchList.size() > 0)
-		if (!this.searchList.isEmpty()) {
+		if (! this.searchList.isEmpty()) {
 			result = true;
 		}
 		return result;
 	}
 
 	ArrayList<SearchVector> getHorizontalSearchVectors() {
-		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
+		ArrayList<SearchVector> svList = new ArrayList<>();
 		int x;
 		int y;
 
@@ -124,7 +124,7 @@ public class Wordsearch {
 		return svList;
 	}
 	ArrayList<SearchVector> getVerticalSearchVectors() {
-		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
+		ArrayList<SearchVector> svList = new ArrayList<>();
 		int x;
 		int y;
 
@@ -141,7 +141,7 @@ public class Wordsearch {
 	}
 
 	ArrayList<SearchVector> getDiag45DegreeSearchVectors() {
-		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
+		ArrayList<SearchVector> svList = new ArrayList<>();
 		int startX;
 		int startY;
 		int x;
@@ -191,7 +191,7 @@ public class Wordsearch {
 	}
 
 	ArrayList<SearchVector> getDiag315DegreeSearchVectors() {
-		ArrayList<SearchVector> svList = new ArrayList<SearchVector>();
+		ArrayList<SearchVector> svList = new ArrayList<>();
 		int startX;
 		int startY;
 		int x;

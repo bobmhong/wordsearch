@@ -24,7 +24,7 @@ public class SearchVector {
     
     public String getMatchCoordinates(String searchWord)
     {
-        String coordString = "";
+        StringBuilder bld = new StringBuilder();
 
         String vectorString = this.toString();
 
@@ -32,18 +32,18 @@ public class SearchVector {
         Matcher m = p.matcher(vectorString);  
         
         if (m.find()){
-            coordString = searchWord + ": ";
+            bld.append(searchWord);
+            bld.append( ": ");
             for (int i = m.start(); i < m.end(); i++ ) {
 
                 if (i > m.start()) {
-                    coordString += ",";
+                    bld.append(",");
                 }
-
-                coordString += this.cells.get(i).getCoordinate();
+                bld.append(this.cells.get(i).getCoordinate());
             }
         }
 
-        return coordString;
+        return bld.toString();
     }
 
     public int size(){
