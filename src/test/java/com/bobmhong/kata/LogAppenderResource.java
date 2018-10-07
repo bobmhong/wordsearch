@@ -20,7 +20,7 @@ public class LogAppenderResource extends ExternalResource {
     /**
      * Logged messages contains message only.
      */
-    private static final String PATTERN = "%msg\n";
+    private static final String PATTERN = "%msg";
 
     private Logger logger;
     private Appender appender;
