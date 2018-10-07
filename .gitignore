@@ -4,3 +4,5 @@ target/
 .factorypath
 .settings/
 .vscode
+dependency-reduced-pom.xml
+wordsearch*.log
