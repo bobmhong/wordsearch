@@ -1,29 +1,33 @@
 package com.bobmhong.kata;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class App {
+	private static final Logger logger = LogManager.getLogger(com.bobmhong.kata.App.class);
+
 	public static void main(String[] args) {
 		String wsInputFileNameFullPath = "";
 
-		if (args.length > 0) {
-			wsInputFileNameFullPath = args[0];
+		if (args.length == 0) {
+			String msg = "Please specify the path to your Word Search data file as the first command line parameter.";
+			logger.error(msg);
 		} else {
-			String msg=	"Please specify the path to your Word Search data file as the first command line parameter.";
-			throw new java.lang.Error(msg);
-		}
+			wsInputFileNameFullPath = args[0];
+			logger.info("Attempting to load: " + wsInputFileNameFullPath);
 
-		System.out.println("Attempting to load: " + wsInputFileNameFullPath);
+			try {
+				Wordsearch ws = new Wordsearch();
 
-		try {
-			Wordsearch ws = new Wordsearch();
-
-			ws.init(wsInputFileNameFullPath);
-			if (ws.populateSearchList()) {
-				ws.solvePuzzle();
-			} else {
-				System.out.println("Sorry, No word matches were found.");
+				ws.init(wsInputFileNameFullPath);
+				if (ws.populateSearchList()) {
+					ws.solvePuzzle();
+				} else {
+					logger.info("Sorry, No word matches were found.");
+				}
+			} catch (Exception e) {
+				logger.fatal(e.getMessage());
 			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
 		}
 
 	}

@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class Wordsearch {
 	private String[] wordList;
 	private String[][] searchGrid;
 	private ArrayList<SearchVector> searchList;
+	
+	private static final Logger logger = LogManager.getLogger(com.bobmhong.kata.App.class);
 
 	public Wordsearch() {
 		searchList = new ArrayList<SearchVector>();
@@ -67,7 +71,7 @@ public class Wordsearch {
 			for (SearchVector sv : searchList) {
 				String matchCoordinates = sv.getMatchCoordinates(word);
 				if (matchCoordinates != "") {
-					System.out.println(matchCoordinates);
+					logger.info(matchCoordinates);
 				}
 			}
 		}
@@ -80,7 +84,7 @@ public class Wordsearch {
 		try {
 			inputArrayList = LoadWordSearchInputArrayList(wsInputFileNameFullPath);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error loading Word Search Input File: " + wsInputFileNameFullPath, e);
 			return false;
 		}
 
