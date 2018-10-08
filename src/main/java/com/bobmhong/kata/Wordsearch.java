@@ -11,7 +11,7 @@ public class Wordsearch {
 	private String[] wordList;
 	private String[][] searchGrid;
 	private ArrayList<SearchVector> searchList;
-	
+
 	private static final Logger logger = LogManager.getLogger(com.bobmhong.kata.App.class);
 
 	public Wordsearch() {
@@ -61,17 +61,20 @@ public class Wordsearch {
 		return searchGrid;
 	}
 
-	public void solvePuzzle() {
+	public boolean solvePuzzle() {
+		
+		boolean solved = false;
 
 		for (String word : wordList) {
 			for (SearchVector sv : searchList) {
 				String matchCoordinates = sv.getMatchCoordinates(word);
-				if (matchCoordinates != "") {
+				if (! matchCoordinates.isEmpty()) {
 					logger.info(matchCoordinates);
-				}
+					solved = true;
+				} 
 			}
 		}
-
+		return solved;
 	}
 
 	public boolean init(String wsInputFileNameFullPath) {
@@ -100,8 +103,8 @@ public class Wordsearch {
 		searchList.addAll(getDiag45DegreeSearchVectors());
 		searchList.addAll(getDiag315DegreeSearchVectors());
 
-		//this.searchList.size() > 0)
-		if (! this.searchList.isEmpty()) {
+		// this.searchList.size() > 0)
+		if (!this.searchList.isEmpty()) {
 			result = true;
 		}
 		return result;
@@ -123,6 +126,7 @@ public class Wordsearch {
 
 		return svList;
 	}
+
 	ArrayList<SearchVector> getVerticalSearchVectors() {
 		ArrayList<SearchVector> svList = new ArrayList<>();
 		int x;
@@ -147,8 +151,8 @@ public class Wordsearch {
 		int x;
 		int y;
 		int gridSize = searchGrid[0].length;
-		SearchVector sv; 
-		
+		SearchVector sv;
+
 		startX = 0;
 		startY = 1;
 		x = startX;
@@ -186,7 +190,7 @@ public class Wordsearch {
 			x = startX;
 			y = startY;
 		}
-		
+
 		return svList;
 	}
 
@@ -197,8 +201,8 @@ public class Wordsearch {
 		int x;
 		int y;
 		int gridSize = searchGrid[0].length;
-		SearchVector sv; 
-		
+		SearchVector sv;
+
 		startX = gridSize - 1;
 		startY = 1;
 		x = startX;
@@ -224,7 +228,7 @@ public class Wordsearch {
 		y = startY;
 		while (x >= 1) {
 			sv = new SearchVector();
-			while (x >= 0 ) {
+			while (x >= 0) {
 				sv.addCell(searchGrid[x][y], x, y);
 				x--;
 				y--;
@@ -236,7 +240,7 @@ public class Wordsearch {
 			x = startX;
 			y = startY;
 		}
-		
+
 		return svList;
 	}
 }

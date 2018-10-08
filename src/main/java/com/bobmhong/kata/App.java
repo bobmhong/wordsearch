@@ -21,9 +21,10 @@ public class App {
 
 				ws.init(wsInputFileNameFullPath);
 				if (ws.populateSearchList()) {
-					ws.solvePuzzle();
-				} else {
-					logger.info("Sorry, No word matches were found.");
+					boolean solved = ws.solvePuzzle();
+					if (!solved) {
+						logger.info("Sorry, No word matches were found.");
+					} 					
 				}
 			} catch (Exception e) {
 				logger.fatal(e.getMessage());

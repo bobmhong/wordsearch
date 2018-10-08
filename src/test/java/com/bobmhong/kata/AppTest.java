@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.*;
 import org.apache.logging.log4j.LogManager;
 import org.junit.Rule;
 import org.junit.Test;
+import java.io.File;
 
 public class AppTest {
 
@@ -29,6 +30,18 @@ public class AppTest {
         App.main(args);
 
         assertThat(appender.getOutput(), containsString(bld.toString()));
+    }
+
+    @Test
+    public void testMainwithUnlistedWordsFileArg() {
+        File resourcesDirectory = new File("src/test/resources/trekSampleDataUnlistedWords.txt");
+
+        //String[] args = { "./target/trekSampleDataUnlistedWords.txt" };
+        String[] args = { resourcesDirectory.getAbsolutePath() };
+        
+        App.main(args);
+
+        assertThat(appender.getOutput(), containsString("Sorry, No word matches were found."));
     }
 
     @Test

@@ -5,8 +5,10 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.junit.Test;
 import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class WordsearchTest {
     static String wsInputFileNameFullPath;
@@ -62,6 +64,22 @@ public class WordsearchTest {
         assertEquals("6", searchGrid[0][2]);
         assertEquals("2", searchGrid[2][0]);
         assertEquals("8", searchGrid[2][2]);
+    }
+
+    @Rule public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void testParseSearchGridWithoutLetters() throws IndexOutOfBoundsException {
+
+        ArrayList<String> sampleArrayList = new ArrayList<String>();
+        sampleArrayList.add("firstword,secondword,thirdword");
+        // Normally, the inputdata would contain a square grid of letters after the first row, 
+        // but it's missing here.
+
+        thrown.expect(IndexOutOfBoundsException.class);
+        thrown.expectMessage("Index: 1, Size: 1");
+        String[][] searchGrid = Wordsearch.parseSearchGrid(sampleArrayList);
+        
     }
 
     @Test
