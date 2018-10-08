@@ -93,21 +93,13 @@ public class Wordsearch {
 
 	}
 
-	boolean populateSearchList() {
+	void populateSearchList() {
 		// traverse the search grid to gather all possible search vectors
-
-		boolean result = false;
 
 		searchList.addAll(getHorizontalSearchVectors());
 		searchList.addAll(getVerticalSearchVectors());
 		searchList.addAll(getDiag45DegreeSearchVectors());
 		searchList.addAll(getDiag315DegreeSearchVectors());
-
-		// this.searchList.size() > 0)
-		if (!this.searchList.isEmpty()) {
-			result = true;
-		}
-		return result;
 	}
 
 	ArrayList<SearchVector> getHorizontalSearchVectors() {

@@ -20,11 +20,10 @@ public class App {
 				Wordsearch ws = new Wordsearch();
 
 				ws.init(wsInputFileNameFullPath);
-				if (ws.populateSearchList()) {
-					boolean solved = ws.solvePuzzle();
-					if (!solved) {
-						logger.info("Sorry, No word matches were found.");
-					} 					
+				ws.populateSearchList();
+				boolean solved = ws.solvePuzzle();
+				if (!solved) {
+					logger.info("Sorry, No word matches were found.");
 				}
 			} catch (Exception e) {
 				logger.fatal(e.getMessage());

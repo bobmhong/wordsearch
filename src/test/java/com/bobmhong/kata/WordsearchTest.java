@@ -50,6 +50,18 @@ public class WordsearchTest {
     }
 
     @Test
+    public void testParseWordlistEmptyArray() throws IndexOutOfBoundsException {
+
+        ArrayList<String> sampleArrayList = new ArrayList<String>();
+        
+        thrown.expect(IndexOutOfBoundsException.class);
+        thrown.expectMessage("Index: 0, Size: 0");
+
+        String[] wordList = Wordsearch.parseWordList(sampleArrayList);
+
+    }
+
+    @Test
     public void testParseSearchGrid() {
 
         ArrayList<String> sampleArrayList = new ArrayList<String>();
