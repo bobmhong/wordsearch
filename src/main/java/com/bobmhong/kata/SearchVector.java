@@ -52,11 +52,11 @@ public class SearchVector {
 
     @Override
     public String toString(){
-        String vectorString = "";
+        StringBuilder sb = new StringBuilder();
         for (Cell c : this.cells) {
-            vectorString += c.toString();
+            sb.append(c.toString());
         }
-        return vectorString;
+        return sb.toString();
     }
 
     public SearchVector getReverseSearchVector(){
